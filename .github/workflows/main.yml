@@ -9,7 +9,7 @@ jobs:
       fail-fast: false
       matrix:
          os: [ubuntu-latest]
-         flag: [A, B, C, D, E]
+         flag: [A]
     timeout-minutes: 360
     continue-on-error: true
     steps:
